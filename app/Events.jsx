@@ -1,23 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import Single from './Event/Single'
+import { scaleTime } from 'd3-scale'
 
 export default class Events extends Component {
   render () {
-    // scaling function (date range) -> (length)
-    // @todo use d3.scale
-    const x = (props => {
-      const { from, to, length } = props
-      const start = +new Date(from)
-      const end = +new Date(to)
-      const k = length / (end - start)
-      
-      return date => (+new Date(date) - start) * k
-    })(this.props)
+    const { events, from, to, length } = this.props
 
-    const { events } = this.props
+    const x = scaleTime()
+      .domain([ new Date(from), new Date(to) ])
+      .range([ 0, length ])
 
     return (<div>{events.map(event => event.type === 'single'
-      ? <Single {...event} x={x(event.date)} />
+      ? <Single {...event} x={x(new Date(event.date))} />
       : <div></div>
     )}</div>)
   }

@@ -9,6 +9,7 @@
     "babel-loader": "^6",
     "babel-preset-es2015": "^6",
     "babel-preset-react": "^6",
+    "d3-scale": "^1",
     "react": "^15",
     "react-dom": "^15",
     "webpack": "^2"

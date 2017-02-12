@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Single from './Event/Single'
+import Continuous from './Event/Continuous'
 import { scaleTime } from 'd3-scale'
 
 export default class Events extends Component {
@@ -14,7 +15,7 @@ export default class Events extends Component {
 
     return (<div>{events.map(event => event.type === 'single'
       ? <Single {...event} x={x(event.date)} />
-      : <div></div>
+      : <Continuous {...event} x={[ x(event.from), x(event.to) ]} />
     )}</div>)
   }
 }

@@ -7,7 +7,20 @@ export default class Single extends Component {
     // @todo styled-components
     const styles = {
       position: 'absolute',
-      top: x + 'px'
+      top: x + 'px',
+      paddingLeft: '15px',
+      zIndex: 2
+    }
+
+    // small circle on the middle-line
+    const marker = {
+      position: 'absolute',
+      top: '7px',
+      left: '3px',
+      width: '4px',
+      height: '4px',
+      background: '#333',
+      borderRadius: '2px'
     }
 
     // get short date string like '10 Feb'
@@ -16,7 +29,8 @@ export default class Single extends Component {
       { day: 'numeric', month: 'short' }
     )
 
-    return (<div style={styles}>
+    return (<div className="single" style={styles}>
+      <div className="marker" style={marker}></div>
       <div className="date">{date}</div>
       <div className="text">{title}</div>
     </div>)

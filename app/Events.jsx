@@ -20,7 +20,7 @@ export default class Events extends Component {
   }
 }
 
-Events.PropTypes = {
+Events.propTypes = {
   from: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,

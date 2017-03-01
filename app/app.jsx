@@ -6,7 +6,7 @@ import Events from './Events'
 const events = [
   {
     type: 'single',
-    date: '2017-02-09T23:00:00Z',
+    from: '2017-02-09T23:00:00Z',
     title: 'Start the Story of My Life'
   },
   {

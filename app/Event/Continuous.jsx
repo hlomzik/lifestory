@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react'
 
 export default class Continuous extends Component {
   render () {
-    let { title, from, to, x: [ x1, x2 ] } = this.props
+    let { title, from, to, x, y, length } = this.props
 
     // @todo styled-components
     const styles = {
       position: 'absolute',
-      top: x1 + 'px',
-      height: (x2 - x1) + 'px',
+      top: x + 'px',
+      height: length + 'px',
       paddingLeft: '15px',
       zIndex: 1
     }
@@ -42,7 +42,9 @@ export default class Continuous extends Component {
 
 Continuous.propTypes = {
   from: PropTypes.string.isRequired,
+  length: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
-  x: PropTypes.arrayOf(PropTypes.number).isRequired
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired
 }

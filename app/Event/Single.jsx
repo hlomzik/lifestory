@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 export default class Single extends Component {
   render () {
-    let { title, date, x } = this.props
+    let { title, from, x, y } = this.props
 
     // @todo styled-components
     const styles = {
@@ -24,21 +24,22 @@ export default class Single extends Component {
     }
 
     // get short date string like '10 Feb'
-    date = new Date(date).toLocaleDateString(
+    from = new Date(from).toLocaleDateString(
       navigator.language,
       { day: 'numeric', month: 'short' }
     )
 
     return (<div className="single" style={styles}>
       <div className="marker" style={marker}></div>
-      <div className="date">{date}</div>
+      <div className="date">{from}</div>
       <div className="text">{title}</div>
     </div>)
   }
 }
 
 Single.propTypes = {
-  date: PropTypes.string.isRequired,
+  from: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  x: PropTypes.number.isRequired
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired
 }

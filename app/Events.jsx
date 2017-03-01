@@ -3,6 +3,8 @@ import Single from './Event/Single'
 import Continuous from './Event/Continuous'
 import { scaleTime } from 'd3-scale'
 
+import { uniform, layers } from './utils/events'
+
 export default class Events extends Component {
   render () {
     const { events, from, to, length } = this.props
@@ -13,9 +15,9 @@ export default class Events extends Component {
 
     const x = date => scale(new Date(date))
 
-    return (<div>{events.map(event => event.type === 'single'
-      ? <Single {...event} x={x(event.date)} />
-      : <Continuous {...event} x={[ x(event.from), x(event.to) ]} />
+    return (<div>{uniform(events, x).map(event => event.single
+      ? <Single {...event} />
+      : <Continuous {...event} />
     )}</div>)
   }
 }

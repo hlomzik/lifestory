@@ -15,7 +15,7 @@ export default class Events extends Component {
 
     const x = date => scale(new Date(date))
 
-    return (<div>{uniform(events, x).map(event => event.single
+    return (<div>{layers(uniform(events, x)).map(event => event.single
       ? <Single {...event} />
       : <Continuous {...event} />
     )}</div>)

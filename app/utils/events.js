@@ -40,3 +40,30 @@ export function uniform (events, scale) {
     return { title, single, from, to, x, length, y: 0 }
   })
 }
+
+/**
+ * Mutate array of events with `x` and `length`, add `y` to each.
+ * @param {PresentationalEvent[]} events
+ * @return {PresentationalEvent[]}
+ */
+export function layers (events) {
+  // maximum filled length in a row; initially one empty row
+  const rows = [ 0 ]
+
+  events.forEach(event => {
+    const len = rows.length
+
+    let y = len
+    for (let i = 0; i < len; i++) {
+      if (rows[i] < event.x) {
+        // stop at first row which could fit this event
+        y = i
+        break
+      }
+    }
+    event.y = y
+    rows[y] = event.x + event.length
+  })
+
+  return events
+}

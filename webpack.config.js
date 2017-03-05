@@ -1,15 +1,21 @@
+const { resolve } = require('path')
+
 module.exports = {
-  entry: './app/app.jsx',
+  entry: [
+    './app.jsx',
+  ],
   output: {
     filename: 'app.js',
-    path: __dirname + '/dist'
+    path: resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
+  context: resolve(__dirname, 'app'),
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx$/,
-        include: [ __dirname + '/app' ],
-        loader: 'babel-loader'
+        exclude: /node_modules/,
+        use: [ 'babel-loader' ]
       }
     ]
   },

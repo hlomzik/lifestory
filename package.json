@@ -4,7 +4,8 @@
   "main": "dist/app.js",
   "author": "hlomzik <hlomzik@gmail.com>",
   "scripts": {
-    "build": "webpack -d"
+    "build": "webpack -d",
+    "start": "webpack-dev-server"
   },
   "devDependencies": {
     "babel": "^6",
@@ -16,13 +17,18 @@
     "d3-scale": "^1",
     "react": "^15",
     "react-dom": "^15",
-    "webpack": "^2"
+    "react-hot-loader": "3.0.0-beta.6",
+    "webpack": "^2",
+    "webpack-dev-server": "^2.3.0"
   },
   "babel": {
     "presets": [
       [ "es2015", { "modules": false } ],
       "stage-2",
       "react"
+    ],
+    "plugins": [
+      "react-hot-loader/babel"
     ]
   }
 }

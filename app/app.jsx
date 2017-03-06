@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 
+import { AppContainer } from 'react-hot-loader'
+
 import Events from './Events'
 
 const events = [
@@ -17,7 +19,19 @@ const events = [
   }
 ]
 
-ReactDOM.render(
-  <Events from="2017-02-01" to="2017-02-11" length={300} events={events} />,
-  document.querySelector('.events')
-)
+const render = () => {
+  ReactDOM.render(
+    <AppContainer>
+      <Events from="2017-02-01" to="2017-02-11" length={300} events={events} />
+    </AppContainer>,
+    document.querySelector('.events')
+  )
+}
+
+render()
+
+if (module.hot) {
+  module.hot.accept('./Events', () => {
+    render()
+  })
+}
